@@ -9,8 +9,6 @@ import java.io.InputStreamReader;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import view.Tela;
-
 public class RunController implements ActionListener {
 	
 	private JTextField fieldExecutar;
@@ -52,7 +50,5 @@ public class RunController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		runCmd();
-		Tela tela = new Tela();
-		tela.dispose();
 	}
 }
