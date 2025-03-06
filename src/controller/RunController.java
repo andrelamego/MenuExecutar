@@ -6,16 +6,19 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class RunController implements ActionListener {
 	
 	private JTextField fieldExecutar;
+	private JFrame frame;
 	
-	public RunController(JTextField fieldExecutar) {
+	public RunController(JTextField fieldExecutar, JFrame frame) {
 		super();
 		this.fieldExecutar = fieldExecutar;
+		this.frame = frame;
 	}
 	
 	private void runCmd() {
@@ -23,6 +26,8 @@ public class RunController implements ActionListener {
 		String[] splitCmd = cmd.split(" ");
 		
 		try {
+			
+			frame.dispose();
 			
 			Process p = Runtime.getRuntime().exec(splitCmd);
 			
@@ -39,6 +44,8 @@ public class RunController implements ActionListener {
 			buffer.close();
 			reader.close();
 			stream.close();
+			
+			
 			
 		} catch (Exception error) {
 			String erro = error.getMessage();

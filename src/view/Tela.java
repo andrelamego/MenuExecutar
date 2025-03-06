@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import controller.CancelController;
 import controller.RunController;
 import controller.SearchController;
 
@@ -72,11 +73,6 @@ public class Tela extends JFrame {
 		contentPane.add(btnProcurar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Tela.this.dispose();
-			}
-		});
 		btnCancelar.setBackground(new Color(221, 221, 221));
 		btnCancelar.setBounds(191, 147, 95, 23);
 		contentPane.add(btnCancelar);
@@ -93,11 +89,14 @@ public class Tela extends JFrame {
 		validate();
 		
 		
-		RunController run = new RunController(fieldExecutar);
+		RunController run = new RunController(fieldExecutar, this);
 		btnOk.addActionListener(run);
 		
 		SearchController search = new SearchController(fieldExecutar);
 		btnProcurar.addActionListener(search);
+		
+		CancelController cancel = new CancelController(this);
+		btnCancelar.addActionListener(cancel);
 		
 	}
 }
